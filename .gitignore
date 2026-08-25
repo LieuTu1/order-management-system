@@ -1,0 +1,25 @@
+# Environment
+.env
+.env.*
+!.env.example
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Backend
+backend/target/
+# Uploaded files
+backend/uploads/
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
