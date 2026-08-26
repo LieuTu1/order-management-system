@@ -119,7 +119,7 @@ public class SecurityConfig {
 
         http.exceptionHandling(exception ->
                 exception.authenticationEntryPoint(authenticationEntryPoint)
-                         .accessDeniedHandler(accessDeniedHandler)
+                        .accessDeniedHandler(accessDeniedHandler)
         );
 
         // BẬT OAuth2 Login
@@ -148,8 +148,19 @@ public class SecurityConfig {
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
+        // Domain frontend production được truyền qua biến môi trường FRONTEND_URL trên Railway.
+        // Nếu chưa set (chạy local), fallback về localhost:3000/3001 như cũ.
+        String frontendUrl = System.getenv("FRONTEND_URL");
+
+        List<String> allowedOrigins = new java.util.ArrayList<>(
+                List.of("http://localhost:3000", "http://localhost:3001")
+        );
+        if (frontendUrl != null && !frontendUrl.isBlank()) {
+            allowedOrigins.add(frontendUrl);
+        }
+
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:3000","http://localhost:3001"));
+        configuration.setAllowedOrigins(allowedOrigins);
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
