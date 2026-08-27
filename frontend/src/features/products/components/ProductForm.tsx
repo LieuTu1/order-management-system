@@ -237,7 +237,7 @@ export default function ProductForm({ productToEdit, onSuccess, onCancel }: Prod
 
                         {productToEdit?.imageUrl && (
                             <img
-                                src={`http://localhost:8080${productToEdit.imageUrl}`}
+                                src={`${API_URL}${productToEdit.imageUrl}`}
                                 alt="Ảnh hiện tại"
                                 className="w-32 h-32 object-contain rounded-lg bg-gray-50 mb-2 border border-gray-200"
                             />

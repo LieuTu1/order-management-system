@@ -12,7 +12,7 @@ export default function ProductCard({ product, onEdit, onDelete }: ProductCardPr
     return (
         <article className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition">
             <img
-                src={`http://localhost:8080${product.imageUrl}`}
+                src={`${API_URL}${product.imageUrl}`}
                 alt={product.name}
                 className="w-full h-[200px] object-contain rounded-lg bg-gray-50 mb-3"
             />

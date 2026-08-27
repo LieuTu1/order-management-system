@@ -1,5 +1,5 @@
 'use client';
-
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -13,7 +13,7 @@ export default function LoginForm() {
         e.preventDefault();
         setError('');
 
-        const response = await fetch('http://localhost:8080/api/auth/login', {
+        const response = await fetch(`${API_URL}/api/auth/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password }),
@@ -78,7 +78,7 @@ export default function LoginForm() {
             </div>
 
             <a
-                href="http://localhost:8080/oauth2/authorization/google"
+                href={`${API_URL}/oauth2/authorization/google`}
                 className="w-full flex items-center justify-center gap-2 border border-gray-300 rounded-lg py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 transition"
             >
                 <svg className="w-5 h-5" viewBox="0 0 48 48">

@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8080';
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
 
 // Hàm gọi API refresh, trả về token mới hoặc null nếu thất bại
 async function refreshAccessToken(): Promise<string | null> {
