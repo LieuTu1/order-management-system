@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import type { Product, CategoryOption, SupplierOption } from '../types';
 import { apiFetch } from '@/lib/apiFetch';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
 
 interface ProductFormProps {
     productToEdit?: Product;
